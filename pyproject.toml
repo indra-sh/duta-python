@@ -20,7 +20,7 @@ dependencies = []
 
 [project.urls]
 Homepage = "https://duta.indra.sh"
-Repository = "https://github.com/Fawwazs17/duta-python"
+Repository = "https://github.com/indra-sh/duta-python"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/duta"]
