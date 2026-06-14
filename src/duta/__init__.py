@@ -1,4 +1,4 @@
-"""Official Python SDK for Duta — transactional email for developers."""
+"""Official Python SDK for Duta: transactional email for developers."""
 
 from .client import Duta, Emails
 from .errors import DutaError
