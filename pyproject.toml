@@ -1,0 +1,26 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "duta-sdk"
+version = "0.1.0"
+description = "Official Python SDK for Duta — transactional email for developers."
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+authors = [{ name = "Duta" }]
+keywords = ["duta", "email", "transactional-email", "ses", "resend-alternative"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = []
+
+[project.urls]
+Homepage = "https://duta.indra.sh"
+Repository = "https://github.com/Fawwazs17/duta-python"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/duta"]
