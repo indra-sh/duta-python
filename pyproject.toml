@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "duta-sdk"
-version = "0.1.0"
+version = "0.1.5"
 description = "Official Python SDK for Duta — transactional email for developers."
 readme = "README.md"
 requires-python = ">=3.8"

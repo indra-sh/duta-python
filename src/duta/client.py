@@ -30,15 +30,19 @@ class Emails:
                 "html": "<p>Thanks for signing up!</p>",
             })
 
-        Accepts ``from``, ``to``, ``subject``, ``html``, ``text``, ``reply_to``,
-        and ``tags``. Returns a dict with ``id`` and ``status``.
-        Raises :class:`DutaError` on failure.
+        Accepts ``from``, ``to``, ``cc``, ``bcc``, ``subject``, ``html``, ``text``,
+        ``reply_to``, and ``tags``.
+        Returns a dict with ``id`` and ``status``. Raises :class:`DutaError` on failure.
         """
         body: Dict[str, Any] = {
             "from": params["from"],
             "to": params["to"],
             "subject": params["subject"],
         }
+        if params.get("cc") is not None:
+            body["cc"] = params["cc"]
+        if params.get("bcc") is not None:
+            body["bcc"] = params["bcc"]
         if params.get("html") is not None:
             body["html"] = params["html"]
         if params.get("text") is not None:
