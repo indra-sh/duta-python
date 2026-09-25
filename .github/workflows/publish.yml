@@ -1,7 +1,8 @@
 name: Publish to PyPI
 
-# Publishes duta-sdk to PyPI via Trusted Publishing (OIDC, no stored token).
-# Triggers when a version tag is pushed (e.g. v0.1.1), or manually.
+# Publishes duta-sdk to PyPI via Trusted Publishing (OIDC, no stored token),
+# with attestations. Triggers when a version tag is pushed (e.g. v0.2.0), or
+# manually. The tests must pass first.
 on:
   push:
     tags:
@@ -9,7 +10,11 @@ on:
   workflow_dispatch:
 
 jobs:
+  test:
+    uses: ./.github/workflows/tests.yml
+
   publish:
+    needs: test
     runs-on: ubuntu-latest
     permissions:
       id-token: write # required for OIDC trusted publishing
@@ -28,5 +33,3 @@ jobs:
 
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
-        # No password/token: OIDC trusted publishing is used automatically
-        # when id-token: write is set and a trusted publisher is configured on PyPI.

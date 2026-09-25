@@ -4,23 +4,34 @@ build-backend = "hatchling.build"
 
 [project]
 name = "duta-sdk"
-version = "0.1.5"
-description = "Official Python SDK for Duta — transactional email for developers."
+version = "0.2.0"
+description = "The official Python SDK for Duta, transactional email for Malaysia."
 readme = "README.md"
-requires-python = ">=3.8"
-license = { text = "MIT" }
+license = "MIT"
+license-files = ["LICENSE"]
 authors = [{ name = "Duta" }]
-keywords = ["duta", "email", "transactional-email", "ses", "resend-alternative"]
+requires-python = ">=3.9"
+dependencies = ["httpx>=0.25,<1"]
+keywords = ["duta", "email", "transactional-email", "malaysia", "resend-alternative"]
 classifiers = [
     "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
+    "Topic :: Communications :: Email",
+    "Typing :: Typed",
 ]
-dependencies = []
 
 [project.urls]
-Homepage = "https://duta.indra.sh"
-Repository = "https://github.com/indra-sh/duta-python"
+Homepage = "https://docs.duta.indra.sh/sdks/"
+Documentation = "https://docs.duta.indra.sh"
+Source = "https://github.com/indra-sh/duta-python"
+Issues = "https://github.com/indra-sh/duta-python/issues"
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "respx>=0.21", "pytest-asyncio>=0.23"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/duta"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"

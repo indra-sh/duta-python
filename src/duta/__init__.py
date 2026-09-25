@@ -1,7 +1,22 @@
-"""Official Python SDK for Duta: transactional email for developers."""
+"""The official Python SDK for Duta, transactional email for Malaysia.
 
-from .client import Duta, Emails
-from .errors import DutaError
+https://docs.duta.indra.sh
+"""
 
-__all__ = ["Duta", "Emails", "DutaError"]
-__version__ = "0.1.0"
+from ._client import AsyncDuta, Duta
+from ._errors import DutaError, WebhookVerificationError
+from ._types import AddressParams, AttachmentParams, SendEmailParams
+from ._version import __version__
+from ._webhooks import verify as verify_webhook
+
+__all__ = [
+    "Duta",
+    "AsyncDuta",
+    "DutaError",
+    "WebhookVerificationError",
+    "verify_webhook",
+    "SendEmailParams",
+    "AddressParams",
+    "AttachmentParams",
+    "__version__",
+]
