@@ -36,7 +36,8 @@ def test_calls_exactly_the_operations_in_the_spec(sync_client, spec):
     d.logs.get("req_1")
     d.usage.get()
 
-    templates = list(spec["paths"])
+    # Fixed paths first: /emails/batch also matches /emails/{id}.
+    templates = sorted(spec["paths"], key=lambda t: (t.count("{"), t))
     made = set()
     for req in rec.requests:
         path = re.sub(r"^/v1", "", req.url.path)
